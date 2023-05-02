@@ -1,19 +1,19 @@
 from flask import Flask, Blueprint, jsonify
 import random
 import argparse
-import os
-import logging
 
-app = Flask(__name__)
+bp = Blueprint('api', __name__)
 
-
-@app.route('/api/health')
+@bp.route('/api/health')
 def health_check():
     return jsonify({'status': 'OK'}), 200
 
-@app.route('/api/random')
+@bp.route('/random')
 def random_number():
     return jsonify({'message': f'Hello world {random.randint(1, 100000)}!'}), 200
+
+app = Flask(__name__)
+app.register_blueprint(bp, url_prefix='/my/path')
 
 if __name__ == '__main__':
 
@@ -21,8 +21,4 @@ if __name__ == '__main__':
     parser.add_argument('--port', type=int, default=8081, help='Port to listen on.')
     args = parser.parse_args()
 
-    # app_path = os.environ.get('SERVER_SERVLET_CONTEXT_PATH', '')
-    # logging.warning("app_path: %s", app_path)
-
-    # app.config['APPLICATION_ROOT'] = app_path
     app.run(debug=True, host='0.0.0.0', port=args.port)
