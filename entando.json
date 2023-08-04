@@ -5,7 +5,7 @@
             "stack": "custom",
             "healthCheckPath": "/api/health",
             "commands": {
-                "run": "python app.py",
+                "run": "ENVIRONMENT=dev python app.py",
                 "build": "echo 'no-op build'",
                 "pack": "docker build -t python-ms ."
             },

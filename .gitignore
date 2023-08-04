@@ -11,6 +11,8 @@
 **/node_modules
 **/target
 **/build
+**/__pycache__/
+**/.venv
 
 ######################
 # IntelliJ IDEA
@@ -26,6 +28,7 @@
 ######################
 
 /svc/keycloak/keycloak-db/*
+
 
 ######################
 # Files to keep

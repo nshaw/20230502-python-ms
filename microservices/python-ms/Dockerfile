@@ -1,8 +1,4 @@
-FROM python:3.9-slim-buster
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
+FROM python:3.9.17-alpine3.18
 
 WORKDIR /app
 
